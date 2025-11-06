@@ -1,0 +1,141 @@
+* { box-sizing: border-box; }
+html, body {
+	height: 100%;
+	margin: 0;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	/* full-screen colorful gradient background */
+	background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 24px;
+}
+h1 { margin: 12px 0 18px 0; color: #05204a; }
+.grid { display: grid; grid-template-columns: repeat(5, 120px); gap: 12px; }
+.card { width: 120px; height: 160px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center; background: rgba(255,255,255,0.9); cursor:pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.06); }
+.card img { max-width: 100%; max-height: 100%; display:block; }
+#status { margin-bottom: 12px; color: #023f6b; }
+
+.controls { display:flex; align-items:center; justify-content:space-between; width:100%; max-width:720px; margin-bottom:18px; }
+.actions { display:flex; align-items:center; gap:12px; }
+button { background:#1976d2; color:white; border:none; padding:8px 12px; border-radius:4px; cursor:pointer; }
+button:disabled { background:#9dbbe6; cursor:default; }
+#errors { font-weight:600; color:#023f6b; }
+.card.matched { opacity:0.6; cursor:default; }
+
+/* Start overlay styles */
+.start-overlay {
+	position: fixed;
+	inset: 0;
+	/* semi-transparent white so the gradient shows through */
+	background: rgba(255,255,255,0.85);
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	z-index: 1000;
+}
+.start-card {
+	width: 480px;
+	min-height: 360px;
+	border-radius: 8px;
+	border: 2px solid rgba(0,0,0,0.06);
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	background: rgba(255,255,255,0.98);
+	box-shadow: 0 24px 60px rgba(2,16,40,0.12);
+	position: relative;
+}
+.start-card #startBanner { display:none; }
+
+/* CSS version of the attached big green Start button */
+.start-card .start-banner {
+	width: 88%;
+	max-width: 680px;
+	height: 180px;
+	margin-bottom: 18px;
+	border-radius: 54px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	font-size:72px;
+	font-weight:800;
+	color: #fff;
+	text-shadow: 0 6px 0 rgba(0,0,0,0.12), 0 2px 0 rgba(255,255,255,0.12) inset;
+	background: linear-gradient(180deg,#63e36a 0%, #1fb11f 60%);
+	border: 10px solid #fff;
+	box-shadow: 0 30px 40px rgba(3,40,80,0.25), 0 6px 8px rgba(0,0,0,0.12) inset;
+	-webkit-box-shadow: 0 30px 40px rgba(3,40,80,0.25), 0 6px 8px rgba(0,0,0,0.12) inset;
+	cursor: pointer;
+}
+.start-card .start-banner:active { transform: translateY(2px); box-shadow: 0 20px 28px rgba(3,40,80,0.20); }
+
+/* removed the big 'Memory Game' title per design request */
+
+/* decorative large faint 'start' behind the title */
+.start-card::after{
+	content: 'start';
+	position: absolute;
+	z-index:1;
+	font-size:84px;
+	color: rgba(2,16,40,0.06);
+	bottom: 120px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-weight:700;
+	pointer-events:none;
+}
+/* small start button inside overlay (blue rounded rectangle) */
+.start-card button.large {
+	padding: 12px 36px;
+	font-size: 18px;
+	background: linear-gradient(180deg,#4aa3f0 0%, #1778d0 100%);
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	box-shadow: 0 10px 18px rgba(23,66,121,0.18);
+	cursor: pointer;
+}
+.start-card button.large:active { transform: translateY(1px); box-shadow: 0 6px 10px rgba(23,66,121,0.12); }
+
+/* small green Start button to replace the blue one */
+.start-card .start-small-green {
+	width: 220px;
+	height: 64px;
+	margin-top: 8px;
+	font-size: 22px;
+	font-weight: 700;
+	color: #fff;
+	background: linear-gradient(180deg,#6ee87a 0%, #2fb42a 60%);
+	border: 8px solid #fff;
+	border-radius: 16px;
+	box-shadow: 0 18px 34px rgba(3,40,80,0.22), 0 6px 8px rgba(0,0,0,0.06) inset;
+	cursor: pointer;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.start-card .start-small-green:active { transform: translateY(2px); box-shadow: 0 12px 22px rgba(3,40,80,0.18); }
+
+.start-card .gallery { display:flex; gap:8px; margin-bottom:18px; padding:0 12px; }
+.start-card .thumb { width:64px; height:48px; object-fit:cover; border-radius:6px; border:1px solid rgba(0,0,0,0.06); box-shadow:0 4px 10px rgba(2,16,40,0.05); }
+
+/* New mockup styles: centered title and main Start button */
+.start-content { display:flex; flex-direction:column; align-items:center; gap:18px; }
+.start-title { font-size:56px; margin: 6px 0 0 0; color: #1b2b3b; font-weight:800; letter-spacing:1px; }
+.start-main { width: 200px; height: 54px; font-size:20px; font-weight:700; color:#fff; background: linear-gradient(180deg,#6ee87a 0%, #2fb42a 60%); border: 8px solid #fff; border-radius: 8px; box-shadow: 0 18px 34px rgba(3,40,80,0.22); cursor:pointer; }
+.start-main:active { transform: translateY(2px); box-shadow: 0 12px 22px rgba(3,40,80,0.18); }
+
+/* Sketch image on the start page (optional). Put the image at project/img/start-sketch.jpg */
+.start-sketch {
+	max-width: 84%;
+	height: auto;
+	border-radius: 6px;
+	box-shadow: 0 12px 28px rgba(2,16,40,0.12);
+	display: none; /* shown only when the image successfully loads */
+}
+.start-sketch.visible { display: block; }
+.start-title.hidden { display: none; }

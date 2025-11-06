@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MatchCards - Web</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>MatchCards — Web Demo</h1>
+  <div class="controls">
+    <div id="status">Loading...</div>
+    <div class="actions">
+      <button id="startBtn">Start Game</button>
+      <button id="restartBtn" disabled>Restart</button>
+      <span id="errors">Errors: 0</span>
+    </div>
+  </div>
+
+  <div id="board" class="grid"></div>
+
+  <!-- Full-page start overlay (sketch-style start page) -->
+  <div id="startOverlay" class="start-overlay">
+    <div class="start-card">
+      <!-- Mockup: centered title and start button -->
+      <div class="start-content">
+  <h2 class="start-title">Memory Game</h2>
+        <button id="overlayStartBtn" class="start-main">Start</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

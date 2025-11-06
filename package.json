@@ -1,0 +1,13 @@
+{
+  "name": "matchcards-backend",
+  "version": "1.0.0",
+  "description": "Minimal backend for MatchCards: serves API and static frontend/images",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}
